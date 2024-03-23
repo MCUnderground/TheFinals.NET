@@ -7,7 +7,7 @@ namespace TheFinals.NET
 {
     public class TheFinalsClient
     {
-        private readonly HttpClient _httpClient;
+        private readonly HttpClient? _httpClient;
         private Dictionary<LeaderboardVersion, ApiRoute> ApiRoutes { get; }
         public ILeaderboardService Leaderboard { get; }
 

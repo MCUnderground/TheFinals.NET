@@ -34,7 +34,10 @@ namespace TheFinals.NET.Endpoints
         {
             var apiRoute = _apiRouteProvider.GetApiRoute(leaderboardVersion);
 
-            string url = apiRoute.Url(platform).ToLower();
+            string? url = apiRoute?.Url(platform).ToLower() ?? null;
+
+            if (url == null)
+                return null;
 
             Trace.WriteLine(url);
 
@@ -48,13 +51,13 @@ namespace TheFinals.NET.Endpoints
                 // If a name filter is provided, filter the entries by name
                 if (!string.IsNullOrEmpty(nameFilter))
                 {
-                    leaderboardEntries = leaderboardEntries.Where(entry => entry.Name.Contains(nameFilter, StringComparison.OrdinalIgnoreCase)).ToList();
+                    leaderboardEntries = leaderboardEntries?.Where(entry => entry.Name.Contains(nameFilter, StringComparison.OrdinalIgnoreCase)).ToList();
                 }
 
                 // If count is provided, return only the first 'count' entries
                 if (count != null)
                 {
-                    leaderboardEntries = leaderboardEntries.Take(count.Value).ToList();
+                    leaderboardEntries = leaderboardEntries?.Take(count.Value).ToList();
                 }
 
                 return leaderboardEntries;

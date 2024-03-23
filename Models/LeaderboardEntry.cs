@@ -45,7 +45,7 @@ namespace TheFinals.NET.Models
 
         public string? League => LeagueNumber.HasValue ? NumberToLeague(LeagueNumber.Value) : null;
 
-        private static string NumberToLeague(int leagueNumber)
+        private static string? NumberToLeague(int leagueNumber)
         {
             var leagueMap = new Dictionary<int, string>
             {
