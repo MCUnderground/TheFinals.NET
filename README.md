@@ -24,10 +24,19 @@ using TheFinals.NET.Models;
 using TheFinals.NET.Providers;
 
 var client = new TheFinalsClient();
-var leaderboard = await client.Leaderboard.GetAsync(LeaderboardVersion.Season1);
+var leaderboardSeason2 = await client.Leaderboard.GetAsync(LeaderboardVersion.Season2);
+
+var leaderboardSeason1Filters = await client.Leaderboard.GetAsync(LeaderboardVersion.Season1, Platform.Steam, count:500, nameFilter:"asd");
 ```
 
 ## Contributing
 
 Contributions are always welcomed.
+
+## Note
+
+Project is not affiliated with [Embark Studios](https://www.embark-studios.com/) or [The Finals](https://www.reachthefinals.com/).
+
+## Links
+[Official The Finals Leaderboard](https://www.reachthefinals.com/leaderboard)
 

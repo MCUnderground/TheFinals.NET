@@ -1,4 +1,5 @@
-﻿using TheFinals.NET.Enums;
+﻿using System;
+using TheFinals.NET.Enums;
 
 namespace TheFinals.NET.Utils
 {
@@ -6,16 +7,23 @@ namespace TheFinals.NET.Utils
     {
         public static string ToApiString(this LeaderboardVersion version)
         {
-            return version switch
+            switch (version)
             {
-                LeaderboardVersion.ClosedBeta1 => "cb1",
-                LeaderboardVersion.ClosedBeta2 => "cb2",
-                LeaderboardVersion.OpenBeta => "ob",
-                LeaderboardVersion.Season1 => "s1",
-                LeaderboardVersion.Season2 => "s2",
-                LeaderboardVersion.Live => "live",
-                _ => throw new ArgumentException(message: "invalid enum value", paramName: nameof(version)),
-            };
+                case LeaderboardVersion.ClosedBeta1:
+                    return "cb1";
+                case LeaderboardVersion.ClosedBeta2:
+                    return "cb2";
+                case LeaderboardVersion.OpenBeta:
+                    return "ob";
+                case LeaderboardVersion.Season1:
+                    return "s1";
+                case LeaderboardVersion.Season2:
+                    return "s2";
+                case LeaderboardVersion.Live:
+                    return "live";
+                default:
+                    throw new ArgumentException(message: "invalid enum value", paramName: nameof(version));
+            }
         }
     }
 }

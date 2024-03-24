@@ -1,5 +1,10 @@
 ﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using TheFinals.NET.Enums;
 using TheFinals.NET.Models;
 using TheFinals.NET.Providers;
@@ -8,7 +13,7 @@ namespace TheFinals.NET.Endpoints
 {
     public interface ILeaderboardService
     {
-        Task<List<LeaderboardEntry>?> GetAsync(LeaderboardVersion leaderboardVersion, Platform platform = Platform.Crossplay, int? count = null, string? nameFilter = null);
+        Task<List<LeaderboardEntry>> GetAsync(LeaderboardVersion leaderboardVersion, Platform platform = Platform.Crossplay, int? count = null, string nameFilter = null);
     }
 
     public class LeaderboardService : ILeaderboardService
@@ -30,11 +35,11 @@ namespace TheFinals.NET.Endpoints
         /// <param name="count">The maximum number of leaderboard entries to retrieve. If not provided, all available entries are retrieved.</param>
         /// <param name="nameFilter">A name to filter the leaderboard entries by. If provided, only entries with a name that contains this string are returned.</param>
         /// <returns>A list of LeaderboardEntry objects, or null if an error occurs.</returns>
-        public async Task<List<LeaderboardEntry>?> GetAsync(LeaderboardVersion leaderboardVersion, Platform platform = Platform.Crossplay, int? count = null, string? nameFilter = null)
+        public async Task<List<LeaderboardEntry>> GetAsync(LeaderboardVersion leaderboardVersion, Platform platform = Platform.Crossplay, int? count = null, string nameFilter = null)
         {
             var apiRoute = _apiRouteProvider.GetApiRoute(leaderboardVersion);
 
-            string? url = apiRoute?.Url(platform).ToLower() ?? null;
+            string url = apiRoute?.Url(platform).ToLower() ?? null;
 
             if (url == null)
                 return null;
@@ -46,12 +51,12 @@ namespace TheFinals.NET.Endpoints
             if (response.IsSuccessStatusCode)
             {
                 var responseContent = await response.Content.ReadAsStringAsync();
-                List<LeaderboardEntry>? leaderboardEntries = JsonConvert.DeserializeObject<List<LeaderboardEntry>>(responseContent);
+                List<LeaderboardEntry> leaderboardEntries = JsonConvert.DeserializeObject<List<LeaderboardEntry>>(responseContent);
 
                 // If a name filter is provided, filter the entries by name
                 if (!string.IsNullOrEmpty(nameFilter))
                 {
-                    leaderboardEntries = leaderboardEntries?.Where(entry => entry.Name.Contains(nameFilter, StringComparison.OrdinalIgnoreCase)).ToList();
+                    leaderboardEntries = leaderboardEntries?.Where(entry => entry.Name.ToLower().Contains(nameFilter.ToLower())).ToList();
                 }
 
                 // If count is provided, return only the first 'count' entries

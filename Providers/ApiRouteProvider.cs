@@ -1,4 +1,6 @@
-﻿using TheFinals.NET.Enums;
+﻿using System;
+using System.Collections.Generic;
+using TheFinals.NET.Enums;
 using TheFinals.NET.Models;
 
 namespace TheFinals.NET.Providers

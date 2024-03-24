@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace TheFinals.NET.Models
 {
@@ -32,20 +33,20 @@ namespace TheFinals.NET.Models
         public int Cashouts { get; set; }
 
         [JsonProperty("steam")]
-        public string? SteamName { get; set; }
+        public string SteamName { get; set; }
 
         [JsonProperty("xbox")]
-        public string? XboxName { get; set; }
+        public string XboxName { get; set; }
 
         [JsonProperty("psn")]
-        public string? PsnName { get; set; }
+        public string PsnName { get; set; }
 
         // Calculated properties
         public int ChangeInRank => OriginalRank - Rank;
 
-        public string? League => LeagueNumber.HasValue ? NumberToLeague(LeagueNumber.Value) : null;
+        public string League => LeagueNumber.HasValue ? NumberToLeague(LeagueNumber.Value) : null;
 
-        private static string? NumberToLeague(int leagueNumber)
+        private static string NumberToLeague(int leagueNumber)
         {
             var leagueMap = new Dictionary<int, string>
             {

@@ -1,4 +1,6 @@
-﻿using TheFinals.NET.Endpoints;
+﻿using System.Collections.Generic;
+using System.Net.Http;
+using TheFinals.NET.Endpoints;
 using TheFinals.NET.Enums;
 using TheFinals.NET.Models;
 using TheFinals.NET.Providers;
@@ -7,7 +9,7 @@ namespace TheFinals.NET
 {
     public class TheFinalsClient
     {
-        private readonly HttpClient? _httpClient;
+        private readonly HttpClient _httpClient;
         private Dictionary<LeaderboardVersion, ApiRoute> ApiRoutes { get; }
         public ILeaderboardService Leaderboard { get; }
 
