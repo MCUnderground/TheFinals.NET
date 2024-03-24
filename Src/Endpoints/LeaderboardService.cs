@@ -44,8 +44,6 @@ namespace TheFinals.NET.Endpoints
             if (url == null)
                 return null;
 
-            Trace.WriteLine(url);
-
             var response = await _httpClient.GetAsync(url);
 
             if (response.IsSuccessStatusCode)

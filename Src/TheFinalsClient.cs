@@ -34,6 +34,7 @@ namespace TheFinals.NET
                 { LeaderboardVersion.OpenBeta, new ApiRoute { Versions =  new List<LeaderboardVersion> { LeaderboardVersion.OpenBeta }, AvailablePlatforms = new List<Platform> { Platform.Crossplay, Platform.Steam, Platform.Xbox, Platform.Psn }, Url = platform => $"https://storage.googleapis.com/embark-discovery-leaderboard/leaderboard-{platform}.json" } },
                 { LeaderboardVersion.Season1, new ApiRoute { Versions =  new List<LeaderboardVersion> { LeaderboardVersion.Season1 }, AvailablePlatforms = new List<Platform> { Platform.Crossplay, Platform.Steam, Platform.Xbox, Platform.Psn }, Url = platform => $"https://storage.googleapis.com/embark-discovery-leaderboard/leaderboard-{platform}-discovery-live.json" } },
                 { LeaderboardVersion.Season2, new ApiRoute { Versions =  new List<LeaderboardVersion> { LeaderboardVersion.Season2 }, AvailablePlatforms = new List<Platform> { Platform.Crossplay, Platform.Steam, Platform.Xbox, Platform.Psn }, Url = platform => $"https://storage.googleapis.com/embark-discovery-leaderboard/s2-leaderboard-{platform}-discovery-live.json" } },
+                { LeaderboardVersion.Live, new ApiRoute { Versions =  new List<LeaderboardVersion> { LeaderboardVersion.Live }, AvailablePlatforms = new List<Platform> { Platform.Crossplay, Platform.Steam, Platform.Xbox, Platform.Psn }, Url = platform => $"https://storage.googleapis.com/embark-discovery-leaderboard/s2-leaderboard-{platform}-discovery-live.json" } },
             };
         }
     }
