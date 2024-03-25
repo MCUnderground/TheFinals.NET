@@ -4,7 +4,7 @@ using TheFinals.NET.Enums;
 
 namespace TheFinals.NET.Models
 {
-    public class ApiRoute
+    public class LeaderboardApiRoute
     {
         public List<LeaderboardVersion> Versions { get; set; }
         public List<Platform> AvailablePlatforms { get; set; }

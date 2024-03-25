@@ -32,7 +32,7 @@ namespace Example
             {
                 foreach (var entry in leaderboardSeason2)
                 {
-                    writer.WriteLine($"{entry.Rank}: {entry.Name} {entry.League}");
+                    writer.WriteLine($"{client.League.GetImageUrl(entry.League, LeagueImageType.Full)}");
                 }
             }
         }

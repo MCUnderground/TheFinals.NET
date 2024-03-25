@@ -8,6 +8,7 @@ TheFinals.NET is a .NET wrapper for The Finals API. This library provides a simp
 - Simple api to get leaderboard data.
 - Allows filtering of leaderboard entries by name.
 - Supports retrieving a specific number of leaderboard entries.
+- Supports retrieving League image for each league, as url or byte array.
 
 ## Installation
 
@@ -23,10 +24,13 @@ using TheFinals.NET.Enums;
 using TheFinals.NET.Models;
 using TheFinals.NET.Providers;
 
-var client = new TheFinalsClient();
-var leaderboardSeason2 = await client.Leaderboard.GetAsync(LeaderboardVersion.Season2);
+TheFinalsClient client = new TheFinalsClient();
+List<LeaderboardEntry> leaderboardSeason2 = await client.Leaderboard.GetAsync(LeaderboardVersion.Season2);
+List<LeaderboardEntry> leaderboardSeason1Filters = await client.Leaderboard.GetAsync(LeaderboardVersion.Season1, Platform.Steam, count:500, nameFilter:"asd");
 
-var leaderboardSeason1Filters = await client.Leaderboard.GetAsync(LeaderboardVersion.Season1, Platform.Steam, count:500, nameFilter:"asd");
+string imageUrl = client.League.GetImageUrl(leaderboardSeason2[0].League, LeagueImageType.Full);
+byte[] imageByte = client.League.GetImageAsync(League.Diamond4, LeagueImageType.Thumbnail);
+
 ```
 
 ## Contributing

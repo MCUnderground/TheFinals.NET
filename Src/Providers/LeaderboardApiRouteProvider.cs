@@ -7,19 +7,19 @@ namespace TheFinals.NET.Providers
 {
     public interface IApiRouteProvider
     {
-        ApiRoute GetApiRoute(LeaderboardVersion leaderboardVersion);
+        LeaderboardApiRoute GetApiRoute(LeaderboardVersion leaderboardVersion);
     }
 
-    public class ApiRouteProvider : IApiRouteProvider
+    public class LeaderboardApiRouteProvider : IApiRouteProvider
     {
-        private readonly Dictionary<LeaderboardVersion, ApiRoute> _apiRoutes;
+        private readonly Dictionary<LeaderboardVersion, LeaderboardApiRoute> _apiRoutes;
 
-        public ApiRouteProvider(Dictionary<LeaderboardVersion, ApiRoute> apiRoutes)
+        public LeaderboardApiRouteProvider(Dictionary<LeaderboardVersion, LeaderboardApiRoute> apiRoutes)
         {
             _apiRoutes = apiRoutes ?? throw new ArgumentNullException(nameof(apiRoutes));
         }
 
-        public ApiRoute GetApiRoute(LeaderboardVersion leaderboardVersion)
+        public LeaderboardApiRoute GetApiRoute(LeaderboardVersion leaderboardVersion)
         {
             if (_apiRoutes.TryGetValue(leaderboardVersion, out var apiRoute))
             {

@@ -21,9 +21,22 @@ namespace TheFinals.NET.Endpoints
         private readonly IApiRouteProvider _apiRouteProvider;
         private readonly HttpClient _httpClient;
 
-        public LeaderboardService(IApiRouteProvider apiRouteProvider, HttpClient httpClient)
+        private Dictionary<LeaderboardVersion, LeaderboardApiRoute> InitializeApiRoutes()
         {
-            _apiRouteProvider = apiRouteProvider ?? throw new ArgumentNullException(nameof(apiRouteProvider));
+            return new Dictionary<LeaderboardVersion, LeaderboardApiRoute>
+            {
+                { LeaderboardVersion.ClosedBeta1, new LeaderboardApiRoute { Versions =  new List<LeaderboardVersion> { LeaderboardVersion.ClosedBeta1 }, AvailablePlatforms = new List<Platform>(), Url = platform => "https://embark-discovery-leaderboard.storage.googleapis.com/leaderboard-beta-1.json" } },
+                { LeaderboardVersion.ClosedBeta2, new LeaderboardApiRoute { Versions =  new List<LeaderboardVersion> { LeaderboardVersion.ClosedBeta2 }, AvailablePlatforms = new List<Platform>(), Url = platform => "https://embark-discovery-leaderboard.storage.googleapis.com/leaderboard.json" } },
+                { LeaderboardVersion.OpenBeta, new LeaderboardApiRoute { Versions =  new List<LeaderboardVersion> { LeaderboardVersion.OpenBeta }, AvailablePlatforms = new List<Platform> { Platform.Crossplay, Platform.Steam, Platform.Xbox, Platform.Psn }, Url = platform => $"https://storage.googleapis.com/embark-discovery-leaderboard/leaderboard-{platform}.json" } },
+                { LeaderboardVersion.Season1, new LeaderboardApiRoute { Versions =  new List<LeaderboardVersion> { LeaderboardVersion.Season1 }, AvailablePlatforms = new List<Platform> { Platform.Crossplay, Platform.Steam, Platform.Xbox, Platform.Psn }, Url = platform => $"https://storage.googleapis.com/embark-discovery-leaderboard/leaderboard-{platform}-discovery-live.json" } },
+                { LeaderboardVersion.Season2, new LeaderboardApiRoute { Versions =  new List<LeaderboardVersion> { LeaderboardVersion.Season2 }, AvailablePlatforms = new List<Platform> { Platform.Crossplay, Platform.Steam, Platform.Xbox, Platform.Psn }, Url = platform => $"https://storage.googleapis.com/embark-discovery-leaderboard/s2-leaderboard-{platform}-discovery-live.json" } },
+                { LeaderboardVersion.Live, new LeaderboardApiRoute { Versions =  new List<LeaderboardVersion> { LeaderboardVersion.Live }, AvailablePlatforms = new List<Platform> { Platform.Crossplay, Platform.Steam, Platform.Xbox, Platform.Psn }, Url = platform => $"https://storage.googleapis.com/embark-discovery-leaderboard/s2-leaderboard-{platform}-discovery-live.json" } },
+            };
+        }
+
+        public LeaderboardService(HttpClient httpClient)
+        {
+            _apiRouteProvider = new LeaderboardApiRouteProvider(InitializeApiRoutes());
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
         }
 

@@ -4,7 +4,7 @@ using TheFinals.NET.Models;
 
 namespace Tests
 {
-    public class UnitGetAsyncTest
+    public class Leaderboard_GetAsyncTest
     {
         private readonly TheFinalsClient _client = new TheFinalsClient();
 
