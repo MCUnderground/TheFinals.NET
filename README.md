@@ -4,8 +4,8 @@ TheFinals.NET is a .NET wrapper for The Finals API. This library provides a simp
 
 ## Features
 
-- Supports multiple versions of the leaderboard API.
-- Provides an interface to interact with the leaderboard service.
+- Supports multiple versions/seasons of the leaderboard API.
+- Simple api to get leaderboard data.
 - Allows filtering of leaderboard entries by name.
 - Supports retrieving a specific number of leaderboard entries.
 
