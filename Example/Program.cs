@@ -42,10 +42,10 @@ namespace Example
             }
             using (var writer = new StreamWriter("leaderboardPlatformPush.txt"))
             {
-                writer.WriteLine($"{leaderboardPlatformPush.Total} / {leaderboardPlatformPush.Goal}");
+                writer.WriteLine($"{leaderboardPlatformPush.Total}km / {leaderboardPlatformPush.Goal}km");
                 foreach (var entry in leaderboardPlatformPush.Entries)
                 {
-                    writer.WriteLine($"{entry.Name}");
+                    writer.WriteLine($"{entry.Name} : {entry.Rank} : {entry.Distance}km");
                 }
             }
         }

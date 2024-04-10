@@ -31,17 +31,29 @@ List<LeaderboardEntry> leaderboardSeason2 = await client.Leaderboards.Main.GetAs
 List<LeaderboardEntry> leaderboardSeason1Filters = await client.Leaderboards.Main.GetAsync(LeaderboardVersion.Season1, Platform.Steam, count:500, nameFilter:"asd");
 
 string imageUrl = client.League.GetImageUrl(leaderboardSeason2[0].League, LeagueImageType.Full);
-byte[] imageByte = await client.League.GetImageAsync(League.Diamond4, LeagueImageType.Thumbnail);
+byte[] imageByte = await client.League.GetImageAsync(League.Diamond4, LeagueImageType.Thumbnail); 
 
 ```
 
-Endpoints:
+LeaderboardEntry includes League property, and can be used to get an League Image for example.
+
+## Endpoints:
 
 ```csharp
-TheFinalsClient.Leaderboards.Main
-TheFinalsClient.Leaderboards.PlatformPushEvent
-TheFinalsClient.League
-TheFinalsClient.Image
+TheFinalsClient
+	Leaderboards
+		Main
+			List<LeaderboardEntry> GetAsync(LeaderboardVersion, Platform = Platform.Crossplay, int? = null, string = null)
+		PlatformPushEvent
+			PlatformPushEventLeaderboard GetAsync(int? = null, string = null)
+TheFinalsClient
+	League
+		string GetImageUrl(League, LeagueImageType)
+		byte[] GetImageAsync(League, LeagueImageType)
+TheFinalsClient
+	Image
+		string GetUrl(League, LeagueImageType)
+		byte[] GetAsync(League, LeagueImageType)
 ```
 
 ## Contributing
