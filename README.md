@@ -31,7 +31,7 @@ List<LeaderboardEntry> leaderboardSeason2 = await client.Leaderboards.Main.GetAs
 List<LeaderboardEntry> leaderboardSeason1Filters = await client.Leaderboards.Main.GetAsync(LeaderboardVersion.Season1, Platform.Steam, count:500, nameFilter:"asd");
 
 string imageUrl = client.League.GetImageUrl(leaderboardSeason2[0].League, LeagueImageType.Full);
-byte[] imageByte = client.League.GetImageAsync(League.Diamond4, LeagueImageType.Thumbnail);
+byte[] imageByte = await client.League.GetImageAsync(League.Diamond4, LeagueImageType.Thumbnail);
 
 ```
 
