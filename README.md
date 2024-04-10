@@ -52,8 +52,8 @@ TheFinalsClient
 		byte[] GetImageAsync(League, LeagueImageType)
 TheFinalsClient
 	Image
-		string GetUrl(League, LeagueImageType)
-		byte[] GetAsync(League, LeagueImageType)
+		string GetUrl(EmbarkImage)
+		byte[] GetAsync(EmbarkImage)
 ```
 
 ## Contributing
