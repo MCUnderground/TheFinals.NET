@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using TheFinals.NET.Enums;
-using TheFinals.NET.Models;
+using TheFinals.NET.Leaderboard.Enums;
+using TheFinals.NET.Leaderboard.Models;
 
-namespace TheFinals.NET.Providers
+namespace TheFinals.NET.Leaderboard.Providers
 {
     public interface IApiRouteProvider
     {

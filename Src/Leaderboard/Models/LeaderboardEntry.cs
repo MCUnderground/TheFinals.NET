@@ -1,19 +1,12 @@
 ﻿using Newtonsoft.Json;
-using System.Collections.Generic;
-using TheFinals.NET.Enums;
+using TheFinals.NET.Leagues.Enums;
 
-namespace TheFinals.NET.Models
+namespace TheFinals.NET.Leaderboard.Models
 {
-    public class LeaderboardEntry
+    public class LeaderboardEntry : BaseLeaderboardEntry
     {
-        [JsonProperty("r")]
-        public int Rank { get; set; }
-
         [JsonProperty("ri")]
         public League League { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
 
         [JsonProperty("f")]
         public int Fame { get; set; }
@@ -32,15 +25,6 @@ namespace TheFinals.NET.Models
 
         [JsonProperty("c")]
         public int Cashouts { get; set; }
-
-        [JsonProperty("steam")]
-        public string SteamName { get; set; }
-
-        [JsonProperty("xbox")]
-        public string XboxName { get; set; }
-
-        [JsonProperty("psn")]
-        public string PsnName { get; set; }
 
         // Calculated properties
         public int ChangeInRank => OriginalRank - Rank;

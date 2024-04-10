@@ -1,15 +1,14 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using TheFinals.NET.Enums;
-using TheFinals.NET.Models;
-using TheFinals.NET.Providers;
+using TheFinals.NET.Leaderboard.Enums;
+using TheFinals.NET.Leaderboard.Models;
+using TheFinals.NET.Leaderboard.Providers;
 
-namespace TheFinals.NET.Endpoints
+namespace TheFinals.NET.Leaderboard.Endpoints
 {
     public interface ILeaderboardService
     {
@@ -25,12 +24,44 @@ namespace TheFinals.NET.Endpoints
         {
             return new Dictionary<LeaderboardVersion, LeaderboardApiRoute>
             {
-                { LeaderboardVersion.ClosedBeta1, new LeaderboardApiRoute { Versions =  new List<LeaderboardVersion> { LeaderboardVersion.ClosedBeta1 }, AvailablePlatforms = new List<Platform>(), Url = platform => "https://embark-discovery-leaderboard.storage.googleapis.com/leaderboard-beta-1.json" } },
-                { LeaderboardVersion.ClosedBeta2, new LeaderboardApiRoute { Versions =  new List<LeaderboardVersion> { LeaderboardVersion.ClosedBeta2 }, AvailablePlatforms = new List<Platform>(), Url = platform => "https://embark-discovery-leaderboard.storage.googleapis.com/leaderboard.json" } },
-                { LeaderboardVersion.OpenBeta, new LeaderboardApiRoute { Versions =  new List<LeaderboardVersion> { LeaderboardVersion.OpenBeta }, AvailablePlatforms = new List<Platform> { Platform.Crossplay, Platform.Steam, Platform.Xbox, Platform.Psn }, Url = platform => $"https://storage.googleapis.com/embark-discovery-leaderboard/leaderboard-{platform}.json" } },
-                { LeaderboardVersion.Season1, new LeaderboardApiRoute { Versions =  new List<LeaderboardVersion> { LeaderboardVersion.Season1 }, AvailablePlatforms = new List<Platform> { Platform.Crossplay, Platform.Steam, Platform.Xbox, Platform.Psn }, Url = platform => $"https://storage.googleapis.com/embark-discovery-leaderboard/leaderboard-{platform}-discovery-live.json" } },
-                { LeaderboardVersion.Season2, new LeaderboardApiRoute { Versions =  new List<LeaderboardVersion> { LeaderboardVersion.Season2 }, AvailablePlatforms = new List<Platform> { Platform.Crossplay, Platform.Steam, Platform.Xbox, Platform.Psn }, Url = platform => $"https://storage.googleapis.com/embark-discovery-leaderboard/s2-leaderboard-{platform}-discovery-live.json" } },
-                { LeaderboardVersion.Live, new LeaderboardApiRoute { Versions =  new List<LeaderboardVersion> { LeaderboardVersion.Live }, AvailablePlatforms = new List<Platform> { Platform.Crossplay, Platform.Steam, Platform.Xbox, Platform.Psn }, Url = platform => $"https://storage.googleapis.com/embark-discovery-leaderboard/s2-leaderboard-{platform}-discovery-live.json" } },
+                {
+                    LeaderboardVersion.ClosedBeta1,
+                    new LeaderboardApiRoute {
+                        AvailablePlatforms = new List<Platform>(),
+                        Url = platform => "https://embark-discovery-leaderboard.storage.googleapis.com/leaderboard-beta-1.json"
+                    }
+                },
+
+                {
+                    LeaderboardVersion.ClosedBeta2,
+                    new LeaderboardApiRoute {
+                        AvailablePlatforms = new List<Platform>(),
+                        Url = platform => "https://embark-discovery-leaderboard.storage.googleapis.com/leaderboard.json" }
+                },
+                {
+                    LeaderboardVersion.OpenBeta,
+                    new LeaderboardApiRoute {
+                        AvailablePlatforms = new List<Platform> { Platform.Crossplay, Platform.Steam, Platform.Xbox, Platform.Psn },
+                        Url = platform => $"https://storage.googleapis.com/embark-discovery-leaderboard/leaderboard-{platform}.json" }
+                },
+                {
+                    LeaderboardVersion.Season1,
+                    new LeaderboardApiRoute {
+                        AvailablePlatforms = new List<Platform> { Platform.Crossplay, Platform.Steam, Platform.Xbox, Platform.Psn },
+                        Url = platform => $"https://storage.googleapis.com/embark-discovery-leaderboard/leaderboard-{platform}-discovery-live.json" }
+                },
+                {
+                    LeaderboardVersion.Season2,
+                    new LeaderboardApiRoute {
+                        AvailablePlatforms = new List<Platform> { Platform.Crossplay, Platform.Steam, Platform.Xbox, Platform.Psn },
+                        Url = platform => $"https://storage.googleapis.com/embark-discovery-leaderboard/s2-leaderboard-{platform}-discovery-live.json" }
+                },
+                {
+                    LeaderboardVersion.Live,
+                    new LeaderboardApiRoute {
+                        AvailablePlatforms = new List<Platform> { Platform.Crossplay, Platform.Steam, Platform.Xbox, Platform.Psn },
+                        Url = platform => $"https://storage.googleapis.com/embark-discovery-leaderboard/s2-leaderboard-{platform}-discovery-live.json" }
+                },
             };
         }
 

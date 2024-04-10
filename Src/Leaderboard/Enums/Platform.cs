@@ -1,4 +1,4 @@
-﻿namespace TheFinals.NET.Enums
+﻿namespace TheFinals.NET.Leaderboard.Enums
 {
     public enum Platform
     {

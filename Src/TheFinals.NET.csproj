@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-	<Version>1.0.3</Version>
+	<Version>1.1.0</Version>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>TheFinals.NET</Title>
     <Authors>MCUnderground</Authors>
@@ -10,11 +10,17 @@
     <PackageProjectUrl>https://github.com/MCUnderground/TheFinals.NET</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/MCUnderground/TheFinals.NET</RepositoryUrl>
-    <PackageReleaseNotes>Routes managment, implementation of League endpoit/service, League enum and updated LeaderboardEntry to get League enum instead of int and string function</PackageReleaseNotes>
+    <PackageReleaseNotes>Improved project strucute, added endpoitns for images and new event leaderboards, like Platform Push Event.</PackageReleaseNotes>
     <PackageTags>TheFinals TheFinalsLeaderboard Leaderboard</PackageTags>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageIcon>icon.png</PackageIcon>
     <SignAssembly>False</SignAssembly>
+    <NeutralLanguage>en</NeutralLanguage>
+    <EnableNETAnalyzers>True</EnableNETAnalyzers>
+    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+    <IncludeSymbols>True</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

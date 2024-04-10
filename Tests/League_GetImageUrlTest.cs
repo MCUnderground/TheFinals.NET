@@ -1,5 +1,6 @@
 ﻿using TheFinals.NET.Enums;
 using TheFinals.NET;
+using TheFinals.NET.Leagues.Enums;
 
 namespace Tests
 {
@@ -8,7 +9,7 @@ namespace Tests
         private readonly TheFinalsClient _client = new TheFinalsClient();
 
         [Fact]
-        public async Task GetImageUrlTest_AllLeagues()
+        public void GetImageUrlTest_AllLeagues()
         {
             foreach (League league in Enum.GetValues(typeof(League)))
             {

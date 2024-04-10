@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using TheFinals.NET.Enums;
+using TheFinals.NET.Leagues.Enums;
 
-namespace TheFinals.NET.Endpoints
+namespace TheFinals.NET.Leagues.Endpoints
 {
     public interface ILeagueService
     {
         string GetImageUrl(League league, LeagueImageType imageType);
+
         Task<byte[]> GetImageAsync(League league, LeagueImageType imageType);
     }
 

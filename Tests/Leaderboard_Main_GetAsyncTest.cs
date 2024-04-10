@@ -1,10 +1,11 @@
 using TheFinals.NET;
 using TheFinals.NET.Enums;
-using TheFinals.NET.Models;
+using TheFinals.NET.Leaderboard.Enums;
+using TheFinals.NET.Leaderboard.Models;
 
 namespace Tests
 {
-    public class Leaderboard_GetAsyncTest
+    public class Leaderboard_Main_GetAsyncTest
     {
         private readonly TheFinalsClient _client = new TheFinalsClient();
 
@@ -13,7 +14,7 @@ namespace Tests
         {
             foreach (LeaderboardVersion version in Enum.GetValues(typeof(LeaderboardVersion)))
             {
-                var leaderboardEntries = await _client.Leaderboard.GetAsync(version);
+                var leaderboardEntries = await _client.Leaderboards.Main.GetAsync(version);
                 Assert.IsType<List<LeaderboardEntry>>(leaderboardEntries);
             }
         }
@@ -23,7 +24,7 @@ namespace Tests
         {
             foreach (Platform platform in Enum.GetValues(typeof(Platform)))
             {
-                var leaderboardEntries = await _client.Leaderboard.GetAsync(LeaderboardVersion.Season2, platform);
+                var leaderboardEntries = await _client.Leaderboards.Main.GetAsync(LeaderboardVersion.Season2, platform);
                 Assert.IsType<List<LeaderboardEntry>>(leaderboardEntries);
             }
         }
@@ -31,7 +32,7 @@ namespace Tests
         [Fact]
         public async Task GetAsyncTest_Count()
         {
-            var leaderboardEntries = await _client.Leaderboard.GetAsync(LeaderboardVersion.Season2, Platform.Crossplay, 10);
+            var leaderboardEntries = await _client.Leaderboards.Main.GetAsync(LeaderboardVersion.Season2, Platform.Crossplay, 10);
             Assert.True(leaderboardEntries.Count <= 10);
         }
 
@@ -39,7 +40,7 @@ namespace Tests
         public async Task GetAsyncTest_NameFilter()
         {
             string nameFilter = "TestPlayer";
-            var leaderboardEntries = await _client.Leaderboard.GetAsync(LeaderboardVersion.Season2, Platform.Crossplay, null, nameFilter);
+            var leaderboardEntries = await _client.Leaderboards.Main.GetAsync(LeaderboardVersion.Season2, Platform.Crossplay, null, nameFilter);
             Assert.All(leaderboardEntries, entry => Assert.Contains(nameFilter, entry.Name));
         }
     }

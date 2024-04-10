@@ -1,5 +1,6 @@
 ﻿using TheFinals.NET;
 using TheFinals.NET.Enums;
+using TheFinals.NET.Leagues.Enums;
 
 namespace Tests
 {

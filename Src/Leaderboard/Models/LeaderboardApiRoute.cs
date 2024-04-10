@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using TheFinals.NET.Enums;
+using TheFinals.NET.Leaderboard.Enums;
 
-namespace TheFinals.NET.Models
+namespace TheFinals.NET.Leaderboard.Models
 {
     public class LeaderboardApiRoute
     {
-        public List<LeaderboardVersion> Versions { get; set; }
         public List<Platform> AvailablePlatforms { get; set; }
         public Func<Platform, string> Url { get; set; }
     }
